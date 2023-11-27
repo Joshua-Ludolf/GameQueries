@@ -3,13 +3,13 @@
     <head>
         <meta charset='utf-8'>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" type="text/css" href="style.css"> 
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}"> 
     </head>
     <body>
     <div class="SearchBar">
        <h2 >
         <ul>
-        <li><a class="Search" href="search.html">Search</a></li>
+        <li><a class="Search" href="{{ url_for('search') }}">Search</a></li>
       </ul>
     </h2>
     </div>
