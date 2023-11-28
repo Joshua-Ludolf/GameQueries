@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset='utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}"> 
+    </head>
+
+    <body>
+        <div class="topnav">
+            <a class="active" href="/">Home</a>
+        </div>
+        <br>
+        <br>
+        <form action= "/search.html" method="POST">
+            <input type="text" name="title" placeholder="Enter Game Title:">
+            <input type="submit" value="Search">
+        </form>
+        <div class="result">
+        {% if game %}
+            <h2>Game Details</h2>
+            <hr style="outline-style: dashed; border-width:0; background-color: crimson;
+            color: crimson;">
+            <p class="p-result">Title: {{ game['TITLE'] }}</p>
+            <p class="p-result">Publisher ID: {{ game['PUB_ID'] }}</p>
+            <p class="p-result">Release Year: {{ game['RELEASE_YEAR'] }}</p>
+            <p class="p-result">Console Code: {{ game['CON_CODE'] }}</p>
+         {% endif %}
+    </div>
+    </body>
+</html>
