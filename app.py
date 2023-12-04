@@ -16,18 +16,22 @@ def index():
     return render_template('index.html')
 
 @app.route('/search.html', methods=['GET', 'POST'])
-def search():
-    game = None
+def search(): 
+    games = None
+   
     if request.method == "POST":
         title = request.form.get('title')
         try:
             cur = cnx.cursor(dictionary=True)
-            cur.execute("SELECT * FROM GAME WHERE TITLE = %s", (title,))
-            game = cur.fetchone()
+            # cur.execute("SELECT * FROM GAME WHERE TITLE = %s", [title])
+            cur.execute("SELECT TITLE, RELEASE_DATE, CON_NAME, PUB_NAME FROM GAME JOIN CONSOLE"\
+                        " ON GAME.CON_CODE = CONSOLE.CON_ID JOIN PUBLISHER ON GAME.PUB_ID = PUBLISHER.PUB_ID" \
+                            " WHERE TITLE = %s", (title,))
+            games = cur.fetchall()
         finally:
             if cur:
                 cur.close()
-    return render_template('search.html', game=game)
+    return render_template('search.html', games=games)
 
 if __name__ == '__main__':
     app.run(host='localhost')

@@ -17,15 +17,28 @@
             <input type="submit" value="Search">
         </form>
         <div class="result">
-        {% if game %}
+            {% if games %}
             <h2>Game Details</h2>
-            <hr style="outline-style: dashed; border-width:0; background-color: crimson;
-            color: crimson;">
-            <p class="p-result">Title: {{ game['TITLE'] }}</p>
-            <p class="p-result">Publisher ID: {{ game['PUB_ID'] }}</p>
-            <p class="p-result">Release Year: {{ game['RELEASE_YEAR'] }}</p>
-            <p class="p-result">Console Code: {{ game['CON_CODE'] }}</p>
-         {% endif %}
+            <table>
+                <tr>
+                    <th>Game</th>
+                    <th>Publisher</th>
+                    <th>Release Year</th>
+                    <th>Console</th>
+                </tr>
+                {% for game in games %}
+                </tr>
+                <!-- <hr style="outline-style: dashed; border-width:0; background-color: crimson;
+                color: crimson;"> -->
+                <td>{{ game['TITLE'] }}</td>
+                <td>{{ game['PUB_NAME'] }}</td>
+                <td>{{ game['RELEASE_DATE'] }}</td>
+                <td>{{ game['CON_NAME'] }}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+            {% endif %}
     </div>
     </body>
 </html>
