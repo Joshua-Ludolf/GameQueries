@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset='utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}"> 
+    </head>
+    <body>
+        <div class="topnav">
+            <a class="active" href="/">Home</a>
+        </div>
+        <h1> Add A Game to the Database </h1>
+        <form action="/add.html" method="post">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <br>
+    
+            <label for="publisher">Publisher:</label>
+            <input type="text" id="publisher" name="publisher" required>
+            <br>
+    
+            <label for="release_year">Release Year:</label>
+            <input type="number" id="release_year" name="release_year" min="1900" max="2099" required>
+            <br>
+    
+            <label for="console">Console:</label>
+            <select id="console" name="console" required>
+                <option value="PS4">PS4</option>
+                <option value="PS5">PS5</option>
+                <option value="XBOX_ONE">XBOX_ONE</option>
+                <option value="XBOX_SERIES_S/X">XBOX_SERIES_S/X</option>
+                <option value="SWITCH">SWITCH</option>
+            </select>
+            <br>
+            <input type="submit" value="add">
+        </form>
+    </body>
+</html>
